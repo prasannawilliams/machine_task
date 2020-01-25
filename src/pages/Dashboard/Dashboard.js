@@ -8,8 +8,9 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Modal from 'react-bootstrap/Modal';
+import { withRouter } from 'react-router';
 
-function UserLoginPage(props) {
+function Dashboard(props) {
   const userDetail = {};
   const [show, setShow] = useState(false);
   const [name, setName] = useState('');
@@ -98,4 +99,4 @@ function UserLoginPage(props) {
 }
 
 // }
-export default UserLoginPage;
+export default withRouter(Dashboard);
