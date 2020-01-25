@@ -12,12 +12,12 @@ import Modal from 'react-bootstrap/Modal';
 function UserLoginPage(props) {
   const userDetail = {};
   const [show, setShow] = useState(false);
-  const [name,setName] = useState('');
-  const [age,setAge] = useState('');
-  const [sex,setSex] = useState('');
-  const [email,setEmail] = useState('');
-  const [gender,setGender] = useState('');
-  const [phone,setPhone] = useState('');
+  const [name, setName] = useState('');
+  const [age, setAge] = useState('');
+  const [sex, setSex] = useState('');
+  const [email, setEmail] = useState('');
+  const [gender, setGender] = useState('');
+  const [phone, setPhone] = useState('');
 
 
   const machineGlobalState = useSelector(s => s.machineReducerState);
@@ -25,6 +25,10 @@ function UserLoginPage(props) {
 
   const dispatch = useDispatch();
   useEffect(() => {
+    let getUserStatus = localStorage.getItem('userData');
+    if (!getUserStatus) {
+      props.history.push('/login')
+    }
     const { match: { params: { restId } = {} } = {} } = props;
     dispatch(usersList())
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -35,7 +39,6 @@ function UserLoginPage(props) {
     setShow(false);
   }
   const handleShow = (userData) => {
-    console.log("userData",userData);
     setName(userData.name);
     setAge(userData.age);
     setSex(userData.sex);

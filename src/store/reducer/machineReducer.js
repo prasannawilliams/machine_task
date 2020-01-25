@@ -1,32 +1,32 @@
-import {USER_LOGIN,USER_LOGIN_FORM,USER_LIST}  from 'store/actionTypes/machineType'
+import { USER_LOGIN, USER_LOGIN_FORM, USER_LIST } from 'store/actionTypes/machineType'
 
 const initialState = {
   sampleState: 'initial state',
-  userName:'',
-  password:'',
-  loginResponse:'',
-  usersListArr:[],
+  userName: '',
+  password: '',
+  loginResponse: '',
+  usersListArr: [],
 }
 
-const sampleReducer = (state = initialState, {type, payload}) => {
-  switch(type) {
+const sampleReducer = (state = initialState, { type, payload }) => {
+  switch (type) {
     case USER_LOGIN: {
       return {
         ...state,
-        loginResponse:payload,
+        loginResponse: payload,
       };
     }
     case USER_LOGIN_FORM: {
       return {
-          ...state,
-          ...payload,
+        ...state,
+        ...payload,
       };
     }
     case USER_LIST: {
       return {
-          ...state,
-          ...payload,
-          usersListArr:payload
+        ...state,
+        ...payload,
+        usersListArr: payload
       };
     }
     default: {

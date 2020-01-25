@@ -6,12 +6,12 @@ import './App.css';
 
 export default class App extends Component {
   render() {
-      return ( 
-        <div className="main-container">
-            <div className = "routing-class"> 
-              <RoutingComponent />
-            </div>  
+    return (
+      <div className="main-container">
+        <div className="routing-class">
+          <RoutingComponent />
         </div>
-      );
+      </div>
+    );
   }
 }

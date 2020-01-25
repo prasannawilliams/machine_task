@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { userLogin,userFormData } from 'store/actions/machineAction';
+import { userLogin, userFormData } from 'store/actions/machineAction';
 import { useSelector, useDispatch } from 'react-redux';
 import { withRouter } from 'react-router';
 
@@ -13,18 +13,16 @@ import Col from 'react-bootstrap/Col';
 function UserLoginPage(props) {
   const [validated, setValidated] = useState(false);
   const machineGlobalState = useSelector(s => s.machineReducerState);
-  const { userName,password,loginResponse } = machineGlobalState;
+  const { userName, password, loginResponse } = machineGlobalState;
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    
-   let getUserStatus =  localStorage.getItem('userData');
-   console.log("getUserStatus",JSON.parse(getUserStatus) );
-   if(getUserStatus)
-   {
-     props.history.push('/dashboard')
-   }
+
+    let getUserStatus = localStorage.getItem('userData');
+    if (getUserStatus) {
+      props.history.push('/dashboard')
+    }
   }, []);
 
   // Submit Action
@@ -34,12 +32,10 @@ function UserLoginPage(props) {
       event.preventDefault();
       event.stopPropagation();
     }
-    else
-    {
+    else {
       event.preventDefault();
       event.stopPropagation();
-      console.log(userName,password);
-      dispatch(userLogin({ username:userName,password:password }));
+      dispatch(userLogin({ username: userName, password: password }));
     }
     setValidated(true);
   };
@@ -53,7 +49,7 @@ function UserLoginPage(props) {
             < Form noValidate validated={validated} onSubmit={handleSubmit}>
               <Form.Group controlId="formBasicEmail">
                 <Form.Label>Email address</Form.Label>
-                <Form.Control  onChange={(e) => dispatch(userFormData({ userName: e.target.value }))} required type="email" placeholder="Enter email" />
+                <Form.Control onChange={(e) => dispatch(userFormData({ userName: e.target.value }))} required type="email" placeholder="Enter email" />
               </Form.Group>
 
               <Form.Group controlId="formBasicPassword">
@@ -64,7 +60,7 @@ function UserLoginPage(props) {
               <Button variant="primary" type="submit">
                 Submit
                 </Button>
-                  <p>{loginResponse}</p>
+              <p>{loginResponse}</p>
             </Form>
           </Col>
         </Row>
